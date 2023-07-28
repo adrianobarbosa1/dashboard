@@ -20,6 +20,8 @@ interface ContextProps {
   isClicked: InitialStateProps;
   setIsClicked: Dispatch<SetStateAction<InitialStateProps>>;
   handleClick: (clicked: string) => void;
+  screenSize: number | undefined;
+  setScreenSize: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const initialState = {
@@ -36,6 +38,7 @@ interface IStateProviderProps {
 }
 
 export const StateProvider: React.FC<IStateProviderProps> = ({ children }) => {
+  const [screenSize, setScreenSize] = useState<number | undefined>(undefined);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
 
@@ -46,6 +49,8 @@ export const StateProvider: React.FC<IStateProviderProps> = ({ children }) => {
     <StateContext.Provider
       value={{
         activeMenu,
+        screenSize,
+        setScreenSize,
         setActiveMenu,
         isClicked,
         setIsClicked,
