@@ -1,12 +1,25 @@
 "use client";
 import { useStateContext } from "@/contexts/ContextProvider";
-import { links } from "@/data/data/dummy";
 import Link from "next/link";
+
+import { useRouter } from "next/navigation";
 import { MdOutlineCancel } from "react-icons/md";
 import { SiShopware } from "react-icons/si";
+import { links } from "./data.sidebar";
 
 const SideBar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const router = useRouter();
+
+  const handleCloseSideBar = () => {
+    if (
+      activeMenu !== undefined &&
+      screenSize !== undefined &&
+      screenSize <= 900
+    ) {
+      setActiveMenu(false);
+    }
+  };
 
   return (
     <div className=" ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
@@ -15,7 +28,7 @@ const SideBar = () => {
           <div className="flex justify-between items-center">
             <Link
               href="/"
-              onClick={() => setActiveMenu(false)}
+              onClick={handleCloseSideBar}
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
               <SiShopware /> <span>Logo</span>
@@ -41,12 +54,13 @@ const SideBar = () => {
                     <Link
                       href={link.name}
                       key={link.name}
-                      className={`flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2 ${({
-                        isActive,
-                      }) =>
-                        isActive
+                      onClick={handleCloseSideBar}
+                      className={`flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2 
+                      ${
+                        router.pathname == link.name
                           ? "text-white  text-md"
-                          : "text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray"}
+                          : "text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray"
+                      }
                       `}
                     >
                       {link.icon}
