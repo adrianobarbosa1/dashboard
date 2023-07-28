@@ -8,11 +8,37 @@ import { RiNotification3Line } from "react-icons/ri";
 import Tooltip from "../Tooltip";
 import NavButton from "./NavButton";
 
+import { useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import Cart from "../Cart";
+import Chat from "../Chat";
+import Notification from "../Notification";
+import UserProfile from "../UserProfile";
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, handleClick, isClicked } =
-    useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    handleClick,
+    isClicked,
+    setScreenSize,
+    screenSize,
+  } = useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize !== undefined && screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
@@ -69,10 +95,10 @@ const Navbar = () => {
           </div>
         </Tooltip>
 
-        {isClicked.cart && "<Cart />"}
-        {isClicked.chat && "<Chat />"}
-        {isClicked.notification && "<Notification />"}
-        {isClicked.userProfile && "<UserProfile />"}
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
