@@ -1,7 +1,6 @@
-import ActiveSidebar from "@/components/ActiveSidebar";
-import { StateProvider } from "@/contexts/ContextProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "tailwindcss/tailwind.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,13 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
-        <StateProvider>
-          {/* SIDEBAR */}
-
-          <ActiveSidebar>{children}</ActiveSidebar>
-        </StateProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
