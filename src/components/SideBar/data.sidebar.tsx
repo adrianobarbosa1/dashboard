@@ -2,45 +2,61 @@ import {
   AiOutlineAreaChart,
   AiOutlineBarChart,
   AiOutlineCalendar,
-  AiOutlineShoppingCart,
   AiOutlineStock,
 } from "react-icons/ai";
 import { BiColorFill } from "react-icons/bi";
 import { BsBarChart, BsKanban } from "react-icons/bs";
-import { FiEdit, FiPieChart, FiShoppingBag } from "react-icons/fi";
+import {
+  FiBook,
+  FiEdit,
+  FiFileText,
+  FiFolder,
+  FiGift,
+  FiPieChart,
+  FiTrendingUp,
+} from "react-icons/fi";
 import { GiLouvrePyramid } from "react-icons/gi";
 import { IoMdContacts } from "react-icons/io";
 import { RiContactsLine, RiStockLine } from "react-icons/ri";
 
 export const links = [
   {
-    title: "Dashboard",
-    links: [
-      {
-        name: "ecommerce",
-        href: "/ecommerce",
-        icon: <FiShoppingBag />,
-      },
-    ],
-  },
-
-  {
     title: "Pages",
     links: [
       {
-        name: "orders",
-        href: "/orders",
-        icon: <AiOutlineShoppingCart />,
+        name: "diários",
+        href: "/dashboard/diarios",
+        icon: <FiBook />,
       },
       {
-        name: "employees",
-        href: "/employees",
+        name: "processos",
+        href: "/dashboard/processos",
+        icon: <FiFolder />,
+      },
+      {
+        name: "documentos",
+        href: "/dashboard/documentos",
+        icon: <FiFileText />,
+      },
+      {
+        name: "doações",
+        href: "/dashboard/doacoes",
+        icon: <FiGift />,
+      },
+      {
+        name: "servidores",
+        href: "/dashboard/servidores",
         icon: <IoMdContacts />,
       },
       {
-        name: "customers",
-        href: "/customers",
+        name: "cidadãos",
+        href: "/dashboard/cidadaos",
         icon: <RiContactsLine />,
+      },
+      {
+        name: "estastísticas",
+        href: "/dashboard/estatisticas",
+        icon: <FiTrendingUp />,
       },
     ],
   },
