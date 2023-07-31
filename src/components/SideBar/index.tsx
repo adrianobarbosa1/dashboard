@@ -2,14 +2,16 @@
 import { useStateContext } from "@/contexts/ContextProvider";
 import Link from "next/link";
 
-import { useRouter } from "next/navigation";
 import { MdOutlineCancel } from "react-icons/md";
 import { SiShopware } from "react-icons/si";
 import { links } from "./data.sidebar";
 
+import { usePathname } from "next/navigation";
+
 const SideBar = () => {
-  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
-  const router = useRouter();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } =
+    useStateContext();
+  const pathname = usePathname();
 
   const handleCloseSideBar = () => {
     if (
@@ -52,12 +54,16 @@ const SideBar = () => {
                 <ul>
                   {item.links.map((link) => (
                     <Link
-                      href={link.name}
+                      href={link.href}
                       key={link.name}
                       onClick={handleCloseSideBar}
+                      style={{
+                        backgroundColor:
+                          pathname == link.href ? currentColor : "",
+                      }}
                       className={`flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2 
                       ${
-                        router.pathname == link.name
+                        pathname == link.href
                           ? "text-white  text-md"
                           : "text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray"
                       }
