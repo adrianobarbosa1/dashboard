@@ -12,6 +12,10 @@ module.exports = {
         'light-gray': '#F7F7F7',
         'half-transparent': 'rgba(0, 0, 0, 0.5)',
       },
+      backgroundImage: {
+        'hero-pattern':
+          "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+      },
     },
   },
   plugins: [],
