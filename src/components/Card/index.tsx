@@ -3,7 +3,7 @@ import HeaderPage from "../HeaderPage";
 type CardProps = {
   children: React.ReactNode;
   category: string;
-  title: string;
+  title?: string;
 };
 
 const Card = ({ children, category, title }: CardProps) => {
