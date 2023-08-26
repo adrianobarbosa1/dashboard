@@ -1,7 +1,10 @@
 "use client";
 import Card from "@/components/Card";
+import { useStateContext } from "@/contexts/ContextProvider";
 
 export default function Home() {
+  const { currentColor } = useStateContext();
+  console.log(currentColor);
   return (
     <Card category="Home">
       <div
@@ -13,7 +16,7 @@ export default function Home() {
             <div className="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center text-gray-800 font-black leading-7 md:leading-10">
                 Solução completa para atender às necessidades específicas da
-                <span className="text-indigo-700">
+                <span style={{ color: currentColor }}>
                   {" "}
                   administração municipal.
                 </span>
@@ -25,10 +28,22 @@ export default function Home() {
               </p>
             </div>
             <div className="flex justify-center items-center">
-              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">
+              <button
+                className={`focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border  py-2 sm:py-4 text-sm`}
+                style={{
+                  backgroundColor: currentColor,
+                  border: currentColor,
+                }}
+              >
                 Get Started
               </button>
-              <button className="ml-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-transparent transition duration-150 ease-in-out hover:border-indigo-600 lg:text-xl lg:font-bold  hover:text-indigo-600 rounded border border-indigo-700 text-indigo-700 px-4 sm:px-10 py-2 sm:py-4 text-sm">
+              <button
+                className="ml-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-transparent transition duration-150 ease-in-out hover:border-indigo-600 lg:text-xl lg:font-bold  hover:text-indigo-600 rounded border   px-4 sm:px-10 py-2 sm:py-4 text-sm"
+                style={{
+                  border: `1px solid ${currentColor}`,
+                  color: currentColor,
+                }}
+              >
                 Live Demo
               </button>
             </div>
