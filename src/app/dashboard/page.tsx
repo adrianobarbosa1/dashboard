@@ -1,43 +1,37 @@
 "use client";
 import Card from "@/components/Card";
-import { useStateContext } from "@/contexts/ContextProvider";
 
 export default function Home() {
-  const { currentColor } = useStateContext();
-
   return (
     <Card category="Home">
-      <div className=" w-100 mx-auto px-6 sm:max-w-2xl md:max-w-3xl md:px-12 lg:max-w-5xl xl:max-w-7xl xl:px-32">
-        <div className="text-center">
-          <div
-            className=" block rounded-lg bg-[hsla(0,0%,100%,0.8)] px-6 py-1 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,15%,0.8)] dark:shadow-black/20 md:py-16 md:px-12"
-            // style={{
-            //   backdropFilter: saturate(200%) blur(25px),
-            // }}
-          >
-            <h1 className="mt-6 mb-16 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl">
-              solução completa para atender às necessidades específicas
-              <br />
-              <span className="text-blue-500">da administração municipal </span>
-            </h1>
-            <a
-              className="mb-2 inline-block rounded bg-primary px-12 pt-4 pb-3.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] md:mr-2 md:mb-0"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-              href="#!"
-              role="button"
-            >
-              Get started
-            </a>
-            <a
-              className="inline-block rounded px-12 pt-4 pb-3.5 text-sm font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700 dark:hover:bg-opacity-40"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-              href="#!"
-              role="button"
-            >
-              Learn more
-            </a>
+      <div
+        className="bg-gray-100 pb-12 overflow-y-hidden"
+        style={{ minHeight: 700 }}
+      >
+        <div className="bg-gray-100">
+          <div className="container mx-auto flex flex-col items-center py-12 sm:py-24">
+            <div className="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center text-gray-800 font-black leading-7 md:leading-10">
+                Solução completa para atender às necessidades específicas da
+                <span className="text-indigo-700">
+                  {" "}
+                  administração municipal.
+                </span>
+              </h1>
+              <p className="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-center text-sm sm:text-lg">
+                Você terá acesso imediato a análises detalhadas, visualizações
+                intuitivas e dados em tempo real que vão revolucionar a maneira
+                como você toma decisões.{" "}
+              </p>
+            </div>
+            <div className="flex justify-center items-center">
+              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">
+                Get Started
+              </button>
+              <button className="ml-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-transparent transition duration-150 ease-in-out hover:border-indigo-600 lg:text-xl lg:font-bold  hover:text-indigo-600 rounded border border-indigo-700 text-indigo-700 px-4 sm:px-10 py-2 sm:py-4 text-sm">
+                Live Demo
+              </button>
+            </div>
           </div>
         </div>
       </div>
