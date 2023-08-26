@@ -3,7 +3,6 @@ import { useStateContext } from "@/contexts/ContextProvider";
 
 export default function Home() {
   const { currentColor } = useStateContext();
-  console.log(currentColor);
   return (
     <div
       className="bg-gray-100 pb-12 overflow-y-hidden"
