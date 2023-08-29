@@ -1,5 +1,7 @@
-import { Loader2 } from "lucide-react";
+import { AiFillEye } from "react-icons/ai";
+import { BiLoaderAlt } from "react-icons/bi";
 
 export const Icons = {
-  spinner: Loader2,
+  spinner: BiLoaderAlt,
+  eye: AiFillEye,
 };
