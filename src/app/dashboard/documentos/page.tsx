@@ -1,10 +1,10 @@
-import Card from "@/components/Card";
+import CustomCard from "@/components/CustomCard";
 
 const page = () => {
   return (
-    <Card category="Page" title="Documentos">
+    <CustomCard category="Page" title="Documentos">
       <div>texto</div>
-    </Card>
+    </CustomCard>
   );
 };
 
