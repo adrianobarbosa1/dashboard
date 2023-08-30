@@ -17,6 +17,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        darkTextoTitulo: '#CDCDFF',
+        darkTexto: "#BDBDDD",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
