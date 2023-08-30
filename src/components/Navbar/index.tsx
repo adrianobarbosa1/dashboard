@@ -79,7 +79,7 @@ const Navbar = () => {
           <DropdownMenuTrigger asChild>
             <div
               // onClick={() => handleClick("userProfile")}
-              className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+              className="flex items-center gap-2 cursor-pointer p-1 hover:bg-lightGray dark:hover:bg-[#1e293b] rounded-lg"
             >
               <Image
                 src="/avatar.jpg"
