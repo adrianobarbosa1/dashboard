@@ -1,4 +1,5 @@
 import { useStateContext } from "@/contexts/ContextProvider";
+import { useTheme } from "next-themes";
 import { BsCheck } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
 import Tooltip from "../Tooltip";
@@ -7,17 +8,18 @@ import { themeColors } from "./data.themeColors";
 const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
     useStateContext();
+  const { theme, setTheme } = useTheme();
 
   return (
-    <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0 transition-all duration-300">
-      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400">
+    <div className="bg-hal w-screen fixed nav-item top-0 right-0 transition-all duration-300">
+      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#33373E] w-400">
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-lg">Settings</p>
           <button
             type="button"
             onClick={() => setThemeSettings(false)}
             style={{ color: "rgb(153, 171, 180)", borderRadius: "50%" }}
-            className="text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray"
+            className="text-2xl p-3 hover:drop-shadow-xl hover:bg-lightGray"
           >
             <MdOutlineCancel />
           </button>
@@ -31,10 +33,9 @@ const ThemeSettings = () => {
               type="radio"
               id="light"
               name="theme"
-              value="Light"
-              onChange={setMode}
+              value="light"
               className="cursor-pointer"
-              checked={currentMode === "Light"}
+              onClick={() => setTheme("light")}
             />
             <label htmlFor="light" className="ml-2 text-md cursor-pointer">
               Light
@@ -45,13 +46,25 @@ const ThemeSettings = () => {
               type="radio"
               id="dark"
               name="theme"
-              value="Dark"
-              onChange={setMode}
+              value="dark"
               className="cursor-pointer"
-              checked={currentMode === "Dark"}
+              onClick={() => setTheme("dark")}
             />
             <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
               Dark
+            </label>
+          </div>
+          <div className="mt-2">
+            <input
+              type="radio"
+              id="system"
+              name="theme"
+              value="system"
+              className="cursor-pointer"
+              onClick={() => setTheme("system")}
+            />
+            <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
+              Sistema
             </label>
           </div>
         </div>
