@@ -1,5 +1,4 @@
 import { useStateContext } from "@/contexts/ContextProvider";
-import { useTheme } from "next-themes";
 import { BsCheck } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
 import Tooltip from "../Tooltip";
@@ -8,7 +7,6 @@ import { themeColors } from "./data.themeColors";
 const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
     useStateContext();
-  const { theme, setTheme } = useTheme();
 
   return (
     <div className="bg-hal w-screen fixed nav-item top-0 right-0 transition-all duration-300">
@@ -25,49 +23,9 @@ const ThemeSettings = () => {
           </button>
         </div>
 
-        <div className="flex-col border-t-1 border-color p-4 ml-4">
+        {/* <div className="flex-col border-t-1 border-color p-4 ml-4">
           <p className="font-semibold text-xl ">Theme Option</p>
-
-          <div className="mt-4">
-            <input
-              type="radio"
-              id="light"
-              name="theme"
-              value="light"
-              className="cursor-pointer"
-              onClick={() => setTheme("light")}
-            />
-            <label htmlFor="light" className="ml-2 text-md cursor-pointer">
-              Light
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="radio"
-              id="dark"
-              name="theme"
-              value="dark"
-              className="cursor-pointer"
-              onClick={() => setTheme("dark")}
-            />
-            <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
-              Dark
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              type="radio"
-              id="system"
-              name="theme"
-              value="system"
-              className="cursor-pointer"
-              onClick={() => setTheme("system")}
-            />
-            <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
-              Sistema
-            </label>
-          </div>
-        </div>
+        </div> */}
 
         <div className="p-4 border-t-1 border-color ml-4">
           <p className="font-semibold text-xl ">Theme Colors</p>
@@ -80,7 +38,7 @@ const ThemeSettings = () => {
                 >
                   <button
                     type="button"
-                    className="h-10 w-10 rounded-full cursor-pointer"
+                    className="h-10 w-10 rounded-lg cursor-pointer"
                     style={{ backgroundColor: item.color }}
                     onClick={() => setColor(item.color)}
                   >
