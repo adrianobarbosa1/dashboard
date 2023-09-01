@@ -24,7 +24,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className=" ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
+    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">
@@ -39,7 +39,7 @@ const SideBar = () => {
             <button
               type="button"
               onClick={() => setActiveMenu(!activeMenu)}
-              className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+              className="text-xl rounded-full p-3 hover:bg-lightGray mt-4 block md:hidden"
             >
               <MdOutlineCancel />
             </button>
@@ -65,7 +65,7 @@ const SideBar = () => {
                       ${
                         pathname == link.href
                           ? "text-white  text-md"
-                          : "text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray"
+                          : "text-md text-gray-700 dark:text-gray-200 hover:bg-[#F7F7F7] dark:hover:bg-[#1e293b] dark:hover:text-gray-200"
                       }
                       `}
                     >

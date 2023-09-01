@@ -1,8 +1,9 @@
+"use client";
+import ThemeProvider from "@/contexts/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
 import "./globals.css";
-import { Providers } from "@/lib/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
