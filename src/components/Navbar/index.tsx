@@ -8,13 +8,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { HamburgerMenuIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+
+import { Button } from "@/components/ui/button";
+
 import { useStateContext } from "@/contexts/ContextProvider";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect } from "react";
-import { AiOutlineMenu, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 import { MdKeyboardArrowDown, MdPermIdentity } from "react-icons/md";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import NavButton from "./NavButton";
 
 const Navbar = () => {
   const {
@@ -26,6 +30,7 @@ const Navbar = () => {
     screenSize,
     currentColor,
   } = useStateContext();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -43,15 +48,20 @@ const Navbar = () => {
   }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
-
+  console.log(currentColor);
   return (
-    <div className=" flex justify-between p-2 md:ml-6 md:mr-6 relative">
-      <NavButton
-        title="Menu"
-        customFunc={handleActiveMenu}
-        color={currentColor}
-        icon={<AiOutlineMenu />}
-      />
+    <div className=" flex align-middle justify-between p-2 md:ml-6 md:mr-6 relative">
+      <Button
+        variant="outline"
+        size="icon"
+        className="mt-3 mr-4"
+        onClick={handleActiveMenu}
+      >
+        <HamburgerMenuIcon className={`fill-[${currentColor}]`} />
+        {/* <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" /> */}
+        <span className="sr-only">Toggle theme</span>
+      </Button>
 
       <div className="flex">
         {/* <NavButton
@@ -74,6 +84,27 @@ const Navbar = () => {
           color={currentColor}
           icon={<RiNotification3Line />}
         /> */}
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="icon" className="mt-3 mr-4">
+              <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="mr-3">
+            <DropdownMenuItem onClick={() => setTheme("light")}>
+              Light
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("dark")}>
+              Dark
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("system")}>
+              System
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
