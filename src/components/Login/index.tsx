@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,15 +13,36 @@ import { PatternFormat } from "react-number-format";
 import LoginButton from "./loginButton";
 import { EsqueceuSenha } from "./esqueceuSenha";
 import { Icons } from "../Icons";
+import { useDispatch, loginUser } from "@/lib/redux";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 export default function LoginCard() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { toast } = useToast();
   const [showPassword, setShowPassword] = useState(false);
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`${cpf} ${senha}`);
+    const loginData = {
+      username: cpf,
+      password: senha,
+    };
+    dispatch(loginUser(loginData))
+      .unwrap()
+      .then((result) => {
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        toast({
+          variant: "destructive",
+          title: "Erro no envio",
+          description: error.result,
+        });
+      });
   };
 
   return (
