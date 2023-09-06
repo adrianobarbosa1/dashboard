@@ -1,3 +1,5 @@
+"use client";
+import ThemeProvider from "@/contexts/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

@@ -1,6 +1,8 @@
+"use client";
 import ActiveSidebar from "@/components/ActiveSidebar";
 import { StateProvider } from "@/contexts/ContextProvider";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,9 +21,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={inter.className}>
         <StateProvider>
-          {/* SIDEBAR */}
-
-          <ActiveSidebar>{children}</ActiveSidebar>
+          <ThemeProvider>
+            <ActiveSidebar>{children}</ActiveSidebar>
+          </ThemeProvider>
         </StateProvider>
       </body>
     </html>
